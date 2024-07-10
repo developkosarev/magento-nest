@@ -21,9 +21,11 @@ help:
 	@echo "$(call format,build,'Build app')"
 
 serve: ## Serve app
-	 npx nx serve dk-dev
+	##npx nx serve dk-dev
+	npx nx run dk-dev:serve
 .PHONY: serve
 
 build: ## Build app
-	 npx nx build dk-dev
+	##npx nx build dk-dev
+	npx nx run dk-dev:build --configuration=production
 .PHONY: build
