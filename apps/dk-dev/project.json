@@ -1,0 +1,24 @@
+{
+  "name": "dk-dev",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dk-dev/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "dk-dev:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "dk-dev:build:development"
+        },
+        "production": {
+          "buildTarget": "dk-dev:build:production"
+        }
+      }
+    }
+  }
+}
