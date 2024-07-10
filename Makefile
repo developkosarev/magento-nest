@@ -17,8 +17,13 @@ help:
 	@echo ""
 	@echo "$(call yellow,Use the following commands:)"
 	@echo "$(call red,===============================)"
-	@echo "$(call format,start,'Start app')"
+	@echo "$(call format,serve,'serve app')"
+	@echo "$(call format,build,'Build app')"
 
-start: ## Start app
+serve: ## Serve app
 	 npx nx serve dk-dev
-.PHONY: start
+.PHONY: serve
+
+build: ## Build app
+	 npx nx build dk-dev
+.PHONY: build
