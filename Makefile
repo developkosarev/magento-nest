@@ -19,6 +19,7 @@ help:
 	@echo "$(call red,===============================)"
 	@echo "$(call format,serve,'serve app')"
 	@echo "$(call format,build,'Build app')"
+	@echo "$(call format,next-start,'Start Next js')"
 
 serve: ## Serve app
 	##npx nx serve dk-dev
@@ -29,3 +30,8 @@ build: ## Build app
 	##npx nx build dk-dev
 	npx nx run dk-dev:build --configuration=production
 .PHONY: build
+
+next-start: ## Next start
+	##npx nx start my-new-app
+	npx nx run my-new-app:start
+.PHONY: next-start
