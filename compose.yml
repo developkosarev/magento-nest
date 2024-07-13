@@ -1,9 +1,16 @@
 version: "3.8"
 services:
-  frontend-app:
-    #image: "ghcr.io/developkosarev/frontolservicenext:latest"
-    image: "my-new-app:nx-container"
+  backend-app:
+    image: "dk-dev:nx-container"
     ports:
-        - "3000:3000"
+      - "3000:3000"
     working_dir: /opt/app
-    container_name: my-new-app
+    container_name: dk-dev
+
+  #frontend-app:
+  #  #image: "ghcr.io/developkosarev/frontolservicenext:latest"
+  #  image: "my-new-app:nx-container"
+  #  ports:
+  #      - "3001:3001"
+  #  working_dir: /opt/app
+  #  container_name: my-new-app
