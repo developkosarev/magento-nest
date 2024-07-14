@@ -43,9 +43,9 @@ USER node
 # Set NODE_ENV environment variable
 ENV NODE_ENV=production
 # Run the build command which creates the production bundle
-RUN npx nx build my-new-app
+RUN npx nx build web-next
 
-CMD [ "npx", "nx", "start", "my-new-app" ]
+CMD [ "npx", "nx", "start", "web-next" ]
 EXPOSE 3000
 
 

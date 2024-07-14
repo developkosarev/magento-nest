@@ -23,7 +23,8 @@ help:
 	@echo "$(call format,cron-test, 'Test cron app')"
 	@echo "$(call format,cron-test-e2e, 'Test cron e2e app, before: make cron-serve')"
 	@echo "$(call red,===============================)"
-	@echo "$(call format,next-start,'Start Next js')"
+	@echo "$(call format,web-next-start,'Start Next js')"
+	@echo "$(call format,web-next-build,'Build Next js')"
 
 ## NEST https://nx.dev/nx-api/nest/documents/overview
 cron-serve: ## Serve cron app
@@ -50,7 +51,12 @@ cron-test-e2e: ## Test cron e2e app
 
 
 ## NEXT https://nx.dev/nx-api/next
-next-start: ## Next start
-	##npx nx start my-new-app
-	npx nx run my-new-app:start
-.PHONY: next-start
+web-next-start: ## Next start
+	##npx nx start web-next
+	npx nx run web-next:start
+.PHONY: web-next-start
+
+web-next-build: ## Next build
+	##npx nx build web-next
+	npx nx run web-next:build
+.PHONY: web-next-build
