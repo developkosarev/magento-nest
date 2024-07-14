@@ -20,6 +20,8 @@ help:
 	@echo "$(call format,cron-serve,'Serve cron app')"
 	@echo "$(call format,cron-build,'Build cron app')"
 	@echo "$(call format,cron-lint, 'Lint cron app')"
+	@echo "$(call format,cron-test, 'Test cron app')"
+	@echo "$(call format,cron-test-e2e, 'Test cron e2e app, before: make cron-serve')"
 	@echo "$(call red,===============================)"
 	@echo "$(call format,next-start,'Start Next js')"
 
@@ -41,6 +43,11 @@ cron-lint: ## Lint cron app
 cron-test: ## Test cron app
 	npx nx test cron
 .PHONY: cron-test
+
+cron-test-e2e: ## Test cron e2e app
+	npx nx test cron-e2e
+.PHONY: cron-test-e2e
+
 
 ## NEXT https://nx.dev/nx-api/next
 next-start: ## Next start
