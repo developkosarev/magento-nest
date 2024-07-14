@@ -43,28 +43,38 @@ USER node
 # Set NODE_ENV environment variable
 ENV NODE_ENV=production
 # Run the build command which creates the production bundle
-RUN npx nx build dk-dev
+RUN npx nx build my-new-app
+
+CMD [ "npx", "nx", "start", "my-new-app" ]
+EXPOSE 3000
+
 
 ###################
 # PRODUCTION
 ###################
 
-FROM node:20-alpine AS production
-LABEL org.opencontainers.image.source="https://github.com/developkosarev/magento-nest"
-LABEL org.opencontainers.image.title="magento-nest"
-LABEL org.opencontainers.image.authors="develop.kosarev@gmail.com"
-LABEL org.opencontainers.image.version="0.0.1"
+#FROM node:20-alpine AS production
+#LABEL org.opencontainers.image.source="https://github.com/developkosarev/magento-nest"
+#LABEL org.opencontainers.image.title="magento-nest"
+#LABEL org.opencontainers.image.authors="develop.kosarev@gmail.com"
+#LABEL org.opencontainers.image.version="0.0.1"
+#
+## Copy the bundled code from the build stage to the production image
+#COPY --chown=node:node --from=build /opt/app/node_modules ./node_modules
+##COPY --chown=node:node --from=build /opt/app/dist ./dist
+#
+## Start the server using the production build
+#CMD [ "npx", "nx", "build", "my-new-app" ]
 
-WORKDIR /opt/app
-
-# Copy the bundled code from the build stage to the production image
-COPY --chown=node:node --from=build /opt/app/node_modules ./node_modules
-COPY --chown=node:node --from=build /opt/app/dist/apps/dk-dev ./dist
-
-USER node
-EXPOSE 3000
-
-# Start the server using the production build
-CMD [ "node", "dist/main.js" ]
-
-#CMD ["dumb-init", "node", "dist/main.js"]
+######################
+#
+#WORKDIR /opt/app
+#ADD package.json package.json
+#RUN npm install
+#
+#ADD . .
+#ENV NODE_ENV=production
+#RUN npx nx build my-new-app
+#RUN npm prune --production
+#CMD ["npm", "start"]
+#EXPOSE 3000

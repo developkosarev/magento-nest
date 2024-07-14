@@ -69,3 +69,10 @@ https://yablyk.com/569175-how-to-wake-computer-from-sleep-mode-automatically/
 
 ### Grids
 https://habr.com/ru/companies/samokat_tech/articles/711202/
+
+### Docker
+docker build --tag dk-dev:nx-container --file /home/dk/my-project/node-nest/magento-nest/apps/dk-dev/Dockerfile .
+docker run --rm -it --entrypoint=sh dk-dev:nx-container
+
+docker compose up
+docker compose up -d
