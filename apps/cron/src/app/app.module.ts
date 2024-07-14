@@ -7,10 +7,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
 @Module({
-  imports: [
-    ScheduleModule.forRoot(),
-    CronjobsModule
-  ],
+  imports: [ScheduleModule.forRoot(), CronjobsModule],
   controllers: [AppController],
   providers: [AppService],
 })

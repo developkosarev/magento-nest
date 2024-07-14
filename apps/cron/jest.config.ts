@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'dk-dev',
+  displayName: 'cron',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }]
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/dk-dev'
+  coverageDirectory: '../../coverage/apps/cron',
 };

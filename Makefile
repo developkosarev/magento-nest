@@ -17,20 +17,32 @@ help:
 	@echo ""
 	@echo "$(call yellow,Use the following commands:)"
 	@echo "$(call red,===============================)"
-	@echo "$(call format,serve,'serve app')"
-	@echo "$(call format,build,'Build app')"
+	@echo "$(call format,cron-serve,'Serve cron app')"
+	@echo "$(call format,cron-build,'Build cron app')"
+	@echo "$(call format,cron-lint, 'Lint cron app')"
+	@echo "$(call red,===============================)"
 	@echo "$(call format,next-start,'Start Next js')"
 
-serve: ## Serve app
-	##npx nx serve dk-dev
-	npx nx run dk-dev:serve
-.PHONY: serve
+## NEST https://nx.dev/nx-api/nest/documents/overview
+cron-serve: ## Serve cron app
+	##npx nx serve cron
+	npx nx run cron:serve
+.PHONY: cron-serve
 
-build: ## Build app
-	##npx nx build dk-dev
-	npx nx run dk-dev:build --configuration=production
-.PHONY: build
+cron-build: ## Build cron app
+	##npx nx build cron
+	npx nx run cron:build --configuration=production
+.PHONY: cron-build
 
+cron-lint: ## Lint cron app
+	npx nx lint cron
+.PHONY: cron-lint
+
+cron-test: ## Test cron app
+	npx nx test cron
+.PHONY: cron-test
+
+## NEXT https://nx.dev/nx-api/next
 next-start: ## Next start
 	##npx nx start my-new-app
 	npx nx run my-new-app:start

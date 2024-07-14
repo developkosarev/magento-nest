@@ -43,7 +43,7 @@ USER node
 # Set NODE_ENV environment variable
 ENV NODE_ENV=production
 # Run the build command which creates the production bundle
-RUN npx nx build dk-dev
+RUN npx nx build cron
 
 ###################
 # PRODUCTION
@@ -59,7 +59,7 @@ WORKDIR /opt/app
 
 # Copy the bundled code from the build stage to the production image
 COPY --chown=node:node --from=build /opt/app/node_modules ./node_modules
-COPY --chown=node:node --from=build /opt/app/dist/apps/dk-dev ./dist
+COPY --chown=node:node --from=build /opt/app/dist/apps/cron ./dist
 
 USER node
 EXPOSE 3000
