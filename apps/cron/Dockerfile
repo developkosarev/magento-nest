@@ -51,9 +51,12 @@ RUN npx nx build cron
 
 FROM node:20-alpine AS production
 LABEL org.opencontainers.image.source="https://github.com/developkosarev/magento-nest"
-LABEL org.opencontainers.image.title="magento-nest"
+LABEL org.opencontainers.image.title="cron"
 LABEL org.opencontainers.image.authors="develop.kosarev@gmail.com"
 LABEL org.opencontainers.image.version="0.0.1"
+
+ENV NODE_ENV=production
+ENV PORT=3001
 
 WORKDIR /opt/app
 
@@ -62,7 +65,7 @@ COPY --chown=node:node --from=build /opt/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /opt/app/dist/apps/cron ./dist
 
 USER node
-EXPOSE 3000
+EXPOSE 3001
 
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]

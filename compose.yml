@@ -1,11 +1,11 @@
 version: "3.8"
 services:
-  backend-app:
-    image: "dk-dev:nx-container"
+  cron:
+    image: "cron:latest"
     ports:
-      - "3000:3000"
+      - "3001:3001"
     working_dir: /opt/app
-    container_name: dk-dev
+    container_name: cron
 
   #frontend-app:
   #  #image: "ghcr.io/developkosarev/frontolservicenext:latest"
