@@ -17,21 +17,46 @@ help:
 	@echo ""
 	@echo "$(call yellow,Use the following commands:)"
 	@echo "$(call red,===============================)"
-	@echo "$(call format,serve,'serve app')"
-	@echo "$(call format,build,'Build app')"
-	@echo "$(call format,next-start,'Start Next js')"
+	@echo "$(call format,cron-serve,'Serve cron app')"
+	@echo "$(call format,cron-build,'Build cron app')"
+	@echo "$(call format,cron-lint, 'Lint cron app')"
+	@echo "$(call format,cron-test, 'Test cron app')"
+	@echo "$(call format,cron-test-e2e, 'Test cron e2e app, before: make cron-serve')"
+	@echo "$(call red,===============================)"
+	@echo "$(call format,web-next-start,'Start Next js')"
+	@echo "$(call format,web-next-build,'Build Next js')"
 
-serve: ## Serve app
-	##npx nx serve dk-dev
-	npx nx run dk-dev:serve
-.PHONY: serve
+## NEST https://nx.dev/nx-api/nest/documents/overview
+cron-serve: ## Serve cron app
+	##npx nx serve cron
+	npx nx run cron:serve
+.PHONY: cron-serve
 
-build: ## Build app
-	##npx nx build dk-dev
-	npx nx run dk-dev:build --configuration=production
-.PHONY: build
+cron-build: ## Build cron app
+	##npx nx build cron
+	npx nx run cron:build --configuration=production
+.PHONY: cron-build
 
-next-start: ## Next start
-	##npx nx start my-new-app
-	npx nx run my-new-app:start
-.PHONY: next-start
+cron-lint: ## Lint cron app
+	npx nx lint cron
+.PHONY: cron-lint
+
+cron-test: ## Test cron app
+	npx nx test cron
+.PHONY: cron-test
+
+cron-test-e2e: ## Test cron e2e app
+	npx nx test cron-e2e
+.PHONY: cron-test-e2e
+
+
+## NEXT https://nx.dev/nx-api/next
+web-next-start: ## Next start
+	##npx nx start web-next
+	npx nx run web-next:start
+.PHONY: web-next-start
+
+web-next-build: ## Next build
+	##npx nx build web-next
+	npx nx run web-next:build
+.PHONY: web-next-build

@@ -76,3 +76,5 @@ docker run --rm -it --entrypoint=sh dk-dev:nx-container
 
 docker compose up
 docker compose up -d
+
+npx nx g @nx/workspace:move --projectName dk-dev --destination apps/cron --newProjectName cron
