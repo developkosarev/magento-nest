@@ -1,7 +1,10 @@
+# Versioning and metadata
 .nx
 .vscode
 .git
+.gitignore
 
+# Build dependencies
 Dockerfile
 .dockerignore
 node_modules
