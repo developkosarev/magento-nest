@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import * as Joi from 'joi';
+
 import { RmqModule } from '@app/common-nest';
+import { BILLING_SERVICE } from './constants/services';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -21,7 +23,10 @@ import { CronjobsModule } from './cronjobs/cronjobs.module';
 
     ScheduleModule.forRoot(),
     CronjobsModule,
-    RmqModule,
+    //RmqModule,
+    RmqModule.register({
+      name: BILLING_SERVICE,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
