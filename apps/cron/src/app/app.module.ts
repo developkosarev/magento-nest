@@ -8,6 +8,7 @@ import { BILLING_SERVICE } from './constants/services';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AppServiceRmq } from './app.service.rmq';
 
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
@@ -29,6 +30,6 @@ import { CronjobsModule } from './cronjobs/cronjobs.module';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppServiceRmq],
 })
 export class AppModule {}
