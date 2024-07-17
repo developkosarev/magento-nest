@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dk-dev/common-nest": ["common-nest/src/index.ts"]
+      "@app/common-nest": ["libs/common-nest/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
