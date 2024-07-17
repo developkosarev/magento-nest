@@ -53,6 +53,9 @@ https://yablyk.com/569175-how-to-wake-computer-from-sleep-mode-automatically/
 ### Grids
 https://habr.com/ru/companies/samokat_tech/articles/711202/
 
+### Microservices
+https://github.com/mguay22/nestjs-rabbitmq-microservices
+
 ## Docker
 
 ### Docker Build
