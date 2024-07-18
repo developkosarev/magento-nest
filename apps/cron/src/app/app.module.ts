@@ -4,7 +4,6 @@ import { ScheduleModule } from '@nestjs/schedule';
 import * as Joi from 'joi';
 
 import { RmqModule } from '@app/common-nest';
-import { BILLING_SERVICE } from './constants/services';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,7 +11,7 @@ import { AppServiceRmq } from './app.service.rmq';
 
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
-import { NOTIFICATIONS_SERVICE } from '@app/common-nest';
+import { BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/common-nest';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifications";
 
