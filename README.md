@@ -55,6 +55,7 @@ https://habr.com/ru/companies/samokat_tech/articles/711202/
 
 ### Microservices
 https://github.com/mguay22/nestjs-rabbitmq-microservices
+https://github.com/mguay22/sleepr/blob/215350263441dbda87dd22745a7d90dab1a31997/apps/notifications/src/notifications.service.ts
 
 ## Docker
 
