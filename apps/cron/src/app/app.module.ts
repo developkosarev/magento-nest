@@ -11,7 +11,7 @@ import { AppServiceRmq } from './app.service.rmq';
 
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
-import { BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/common-nest';
+import { CRON_SERVICE, BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/common-nest';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifications";
 
@@ -28,6 +28,9 @@ import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifi
     ScheduleModule.forRoot(),
     CronjobsModule,
     //RmqModule,
+    RmqModule.register({
+      name: CRON_SERVICE,
+    }),
     RmqModule.register({
       name: BILLING_SERVICE,
     }),

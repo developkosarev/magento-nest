@@ -5,7 +5,9 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+
 import { RmqService } from '@app/common-nest';
+import { CRON_SERVICE } from '@app/common-nest';
 
 import { AppModule } from './app/app.module';
 
@@ -13,7 +15,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const rmqService = app.get<RmqService>(RmqService);
-  app.connectMicroservice(rmqService.getOptions('BILLING'));
+  app.connectMicroservice(rmqService.getOptions(CRON_SERVICE));
   await app.startAllMicroservices();
 
   const globalPrefix = 'api';
@@ -21,7 +23,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3001;
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 Cron is running on: http://localhost:${port}/${globalPrefix}`
   );
 }
 
