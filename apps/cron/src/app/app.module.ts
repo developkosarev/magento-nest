@@ -11,9 +11,14 @@ import { AppService } from './app.service';
 
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
-import { CRON_SERVICE, BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/common-nest';
+import {
+  CRON_SERVICE,
+  BILLING_SERVICE,
+  NOTIFICATIONS_SERVICE,
+} from '@app/common-nest';
 //import { ClientsModule, Transport } from '@nestjs/microservices';
 //import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifications";
+import { NewsletterModule } from './newsletter/newsletter.module';
 
 @Module({
   imports: [
@@ -27,10 +32,12 @@ import { CRON_SERVICE, BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/commo
 
     ScheduleModule.forRoot(),
     CronjobsModule,
+    NewsletterModule,
 
     RmqModule.register({
       name: CRON_SERVICE,
     }),
+
     //RmqModule.register({
     //  name: BILLING_SERVICE,
     //}),
