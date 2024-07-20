@@ -2,11 +2,13 @@ import { Controller, Get } from '@nestjs/common';
 import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
 
 import { RmqService } from '@app/common-nest';
+import { CronService } from './cron.service';
 
 @Controller()
 export class CronController {
   constructor(
-    private readonly rmqService: RmqService
+    private readonly rmqService: RmqService,
+    private readonly cronService: CronService
   ) {}
 
   @Get()
@@ -16,9 +18,11 @@ export class CronController {
 
   @EventPattern('reminder_email_task')
   async notifyEmail(@Payload() data: any, @Ctx() context: RmqContext) {
-    console.log(1111)
-    console.log(data)
+    //console.log(1111)
+    //console.log(data)
     //console.log(context)
+
+    this.cronService.notifyEmail(data);
 
     this.rmqService.ack(context);
   }
