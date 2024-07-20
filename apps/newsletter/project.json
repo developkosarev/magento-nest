@@ -1,0 +1,24 @@
+{
+  "name": "newsletter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/newsletter/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "newsletter:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "newsletter:build:development"
+        },
+        "production": {
+          "buildTarget": "newsletter:build:production"
+        }
+      }
+    }
+  }
+}
