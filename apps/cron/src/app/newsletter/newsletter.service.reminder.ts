@@ -13,15 +13,18 @@ export class NewsletterServiceReminder {
   reminder() {
     Logger.log('Newsletter reminder...');
 
+    const amount = 44;
+    this.cronService.emit('reminder_email_task', {
+      email: 'reminder@test',
+      text: `Reminder: Your payment $${amount} has completed successfully.`,
+    });
+
     setTimeout(() => {
       Logger.log("Newsletter delayed for 5 second.");
-      const amount = 44;
-
-      this.cronService.emit('reminder_email_task', {
-        email: 'reminder@test',
-        text: `Reminder: Your payment $${amount} has completed successfully.`,
-      });
-
     }, 5000);
+  }
+
+  getData(): { message: string } {
+    return { message: 'Hello newsletter API' };
   }
 }
