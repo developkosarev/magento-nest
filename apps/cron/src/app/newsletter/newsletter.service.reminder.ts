@@ -7,12 +7,11 @@ import { CRON_SERVICE } from '@app/common-nest';
 @Injectable()
 export class NewsletterServiceReminder {
   constructor(
-    @Inject(CRON_SERVICE) private readonly cronService: ClientProxy,
+    @Inject('MATH_SERVICE') private readonly cronService: ClientProxy,
   ) {}
 
   reminder() {
     Logger.log('Newsletter reminder...');
-
     const amount = 44;
     this.cronService.emit('reminder_email_task', {
       email: 'reminder@test',
