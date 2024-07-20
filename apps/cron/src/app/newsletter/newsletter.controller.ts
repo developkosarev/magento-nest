@@ -10,7 +10,7 @@ export class NewsletterController {
 
   @Get()
   async getData() {
-    this.newsletterServiceReminder.reminder();
+    await this.newsletterServiceReminder.reminder();
     return this.newsletterServiceReminder.getData();
   }
 }

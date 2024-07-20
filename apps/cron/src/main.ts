@@ -15,7 +15,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const rmqService = app.get<RmqService>(RmqService);
-  const rmqOptions = rmqService.getOptions(CRON_SERVICE);
+  const rmqOptions = rmqService.getOptions('CRON');
   app.connectMicroservice(rmqOptions);
   await app.startAllMicroservices();
 
@@ -24,9 +24,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
-  Logger.log(
-    `🚀 Cron is running on: http://localhost:${port}/${globalPrefix}`
-  );
+  Logger.log(`🚀 Cron is running on: http://localhost:${port}/${globalPrefix}`);
 }
 
 bootstrap();
