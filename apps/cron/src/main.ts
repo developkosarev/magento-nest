@@ -15,7 +15,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const rmqService = app.get<RmqService>(RmqService);
-  app.connectMicroservice(rmqService.getOptions(CRON_SERVICE));
+  const rmqOptions = rmqService.getOptions(CRON_SERVICE);
+  app.connectMicroservice(rmqOptions);
   await app.startAllMicroservices();
 
   const globalPrefix = 'api';
