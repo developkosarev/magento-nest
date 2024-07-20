@@ -1,4 +1,4 @@
-import {Controller, Get} from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
 
 import { RmqService } from '@app/common-nest';
@@ -17,6 +17,9 @@ export class CronController {
   @EventPattern('reminder_email_task')
   async notifyEmail(@Payload() data: any, @Ctx() context: RmqContext) {
     console.log(1111)
+    console.log(data)
+    //console.log(context)
+
     this.rmqService.ack(context);
   }
 }
