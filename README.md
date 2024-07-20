@@ -87,3 +87,7 @@ docker compose -f compose-magento-next.yml pull \
 
 npx nx g @nx/workspace:move --projectName dk-dev --destination apps/cron --newProjectName cron
 ```
+### NX cli
+```
+nx g @nx/nest:module newsletter --directory apps/cron/src/app/newsletter
+```

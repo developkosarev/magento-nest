@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {ConfigModule, ConfigService} from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import * as Joi from 'joi';
 
@@ -7,13 +7,18 @@ import { RmqModule } from '@app/common-nest';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AppServiceRmq } from './app.service.rmq';
+//import { AppServiceRmq } from './app.service.rmq';
 
 import { CronjobsModule } from './cronjobs/cronjobs.module';
 
-import { BILLING_SERVICE, NOTIFICATIONS_SERVICE } from '@app/common-nest';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifications";
+import {
+  CRON_SERVICE,
+  BILLING_SERVICE,
+  NOTIFICATIONS_SERVICE,
+} from '@app/common-nest';
+//import { ClientsModule, Transport } from '@nestjs/microservices';
+//import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifications";
+import { NewsletterModule } from './newsletter/newsletter.module';
 
 @Module({
   imports: [
@@ -27,28 +32,37 @@ import { CronjobsServiceNotifications } from "./cronjobs/cronjobs.service.notifi
 
     ScheduleModule.forRoot(),
     CronjobsModule,
-    //RmqModule,
+    NewsletterModule,
+
     RmqModule.register({
-      name: BILLING_SERVICE,
+      name: CRON_SERVICE,
     }),
-    ClientsModule.registerAsync([
-      {
-        name: NOTIFICATIONS_SERVICE,
-        useFactory: (configService: ConfigService) => ({
-          transport: Transport.RMQ,
-          options: {
-            urls: [configService.get<string>('RABBIT_MQ_URI')],
-            queue: 'notifications',
-            queueOptions: {
-              durable: false
-            },
-          },
-        }),
-        inject: [ConfigService],
-      },
-    ]),
+
+    //RmqModule.register({
+    //  name: BILLING_SERVICE,
+    //}),
+    //ClientsModule.registerAsync([
+    //  {
+    //    name: NOTIFICATIONS_SERVICE,
+    //    useFactory: (configService: ConfigService) => ({
+    //      transport: Transport.RMQ,
+    //      options: {
+    //        urls: [configService.get<string>('RABBIT_MQ_URI')],
+    //        queue: 'notifications',
+    //        queueOptions: {
+    //          durable: false
+    //        },
+    //      },
+    //    }),
+    //    inject: [ConfigService],
+    //  },
+    //]),
   ],
   controllers: [AppController],
-  providers: [AppService, AppServiceRmq, CronjobsServiceNotifications],
+  providers: [
+    AppService,
+    //AppServiceRmq,
+    //CronjobsServiceNotifications
+  ],
 })
 export class AppModule {}
