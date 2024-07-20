@@ -7,7 +7,7 @@ import { CRON_SERVICE } from '@app/common-nest';
 @Injectable()
 export class NewsletterServiceReminder {
   constructor(
-    @Inject('MATH_SERVICE') private readonly cronService: ClientProxy,
+    @Inject( CRON_SERVICE ) private readonly cronService: ClientProxy,
   ) {}
 
   reminder() {
