@@ -1,3 +1,5 @@
+DOCKER_COMPOSE_DEV = docker compose -f compose.dev.yml
+
 args = `arg="$(filter-out $(firstword $(MAKECMDGOALS)),$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
 green  = $(shell printf "\e[32;01m$1\e[0m")
@@ -25,6 +27,10 @@ help:
 	@echo "$(call red,===============================)"
 	@echo "$(call format,web-next-start,'Start Next js')"
 	@echo "$(call format,web-next-build,'Build Next js')"
+	@echo "$(call red,===============================)"
+	@echo "$(call format,docker-start,'Start docker compose dev')"
+	@echo "$(call format,docker-stop,'Stop docker compose dev')"
+	@echo "$(call format,docker-down,'Down docker compose dev')"
 
 ## NEST https://nx.dev/nx-api/nest/documents/overview
 cron-serve: ## Serve cron app
@@ -60,3 +66,17 @@ web-next-build: ## Next build
 	##npx nx build web-next
 	npx nx run web-next:build
 .PHONY: web-next-build
+
+## DOCKER DEV
+
+docker-start:
+	$(DOCKER_COMPOSE_DEV) up --build --detach
+.PHONY: docker-start
+
+docker-down:
+	$(DOCKER_COMPOSE_DEV) down
+.PHONY: docker-down
+
+docker-stop:
+	$(DOCKER_COMPOSE_DEV) stop
+.PHONY: docker-stop
