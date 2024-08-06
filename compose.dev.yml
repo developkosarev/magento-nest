@@ -1,18 +1,18 @@
 services:
-  #cron:
-  #  build:
-  #    context: .
-  #    dockerfile: apps/cron/Dockerfile-dev
-  #    target: development
-  #  container_name: cron
-  #  command: npx nx run cron:serve
-  #  env_file:
-  #    - ./apps/cron/.env
-  #  working_dir: /usr/src/app
-  #  ports:
-  #    - "3001:3001"
-  #  volumes:
-  #    - .:/usr/src/app
+  cron:
+    build:
+      context: .
+      dockerfile: apps/cron/Dockerfile-dev
+      target: development
+    container_name: cron
+    command: npx nx run cron:serve
+    env_file:
+      - ./apps/cron/.env
+    working_dir: /usr/src/app
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
 
   #cron:
   #  image: "cron:latest"
