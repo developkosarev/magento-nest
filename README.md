@@ -89,5 +89,12 @@ npx nx g @nx/workspace:move --projectName dk-dev --destination apps/cron --newPr
 ```
 ### NX cli
 ```
-nx g @nx/nest:module newsletter --directory apps/cron/src/app/newsletter
+npx nx g @nx/nest:module newsletter --directory apps/cron/src/app/newsletter
+```
+
+### NX cli prisma
+https://www.npmjs.com/package/@nx-tools/nx-prisma
+```
+npx nx g @nx-tools/nx-prisma:configuration cron
+npx nx prisma-migrate cron --name init
 ```

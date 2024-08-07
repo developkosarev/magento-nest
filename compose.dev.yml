@@ -38,5 +38,18 @@ services:
       - rabbitmqdata:/var/lib/rabbitmq
     env_file: images/env/rabbitmq.env
 
+  db:
+    image: mariadb:10.5
+    command:
+      --max_allowed_packet=64M
+      --optimizer_use_condition_selectivity=1
+      --optimizer_switch="rowid_filter=off"
+    ports:
+      - "3306:3306"
+    env_file: images/env/db.env
+    volumes:
+      - dbdata:/var/lib/mysql
+
 volumes:
+  dbdata:
   rabbitmqdata:
