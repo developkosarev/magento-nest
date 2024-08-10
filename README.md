@@ -57,6 +57,9 @@ https://habr.com/ru/companies/samokat_tech/articles/711202/
 https://github.com/mguay22/nestjs-rabbitmq-microservices
 https://github.com/mguay22/sleepr/blob/215350263441dbda87dd22745a7d90dab1a31997/apps/notifications/src/notifications.service.ts
 
+### Prisma
+https://www.tomray.dev/nestjs-prisma
+
 ## Docker
 
 ### Docker Build
@@ -89,5 +92,12 @@ npx nx g @nx/workspace:move --projectName dk-dev --destination apps/cron --newPr
 ```
 ### NX cli
 ```
-nx g @nx/nest:module newsletter --directory apps/cron/src/app/newsletter
+npx nx g @nx/nest:module newsletter --directory apps/cron/src/app/newsletter
+```
+
+### NX cli prisma
+https://www.npmjs.com/package/@nx-tools/nx-prisma
+```
+npx nx g @nx-tools/nx-prisma:configuration cron
+npx nx prisma-migrate cron --name init
 ```
